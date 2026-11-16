@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { events } from "../data";
+import { useSavedEvents } from "./SavedEventsContext";
 
 const categories = ["All", "Tech", "Sports", "Faith", "Social"];
 
@@ -17,6 +18,7 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortOrder, setSortOrder] = useState("soonest");
   const [searchTerm, setSearchTerm] = useState("");
+  const { toggleSavedEvent, isSaved } = useSavedEvents();
 
   const categoryEvents =
     selectedCategory === "All"
@@ -37,16 +39,25 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-10 text-slate-900 sm:px-8">
       <div className="mx-auto max-w-7xl">
-        <header className="mb-8">
-          <p className="text-sm font-semibold uppercase tracking-wide text-indigo-700">
-            Campus life
-          </p>
-          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
-            Campus Event Board
-          </h1>
-          <p className="mt-3 max-w-2xl text-slate-600">
-            Find what’s happening on campus and make plans to join in.
-          </p>
+        <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-700">
+              Campus life
+            </p>
+            <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
+              Campus Event Board
+            </h1>
+            <p className="mt-3 max-w-2xl text-slate-600">
+              Find what’s happening on campus and make plans to join in.
+            </p>
+          </div>
+
+          <Link
+            href="/my-events"
+            className="rounded-lg bg-indigo-700 px-4 py-2 font-semibold text-white hover:bg-indigo-800"
+          >
+            My Events
+          </Link>
         </header>
 
         <section aria-label="Campus events">
@@ -145,12 +156,22 @@ export default function Home() {
                       {event.description}
                     </p>
 
-                    <Link
-                      href={`/events/${event.id}`}
-                      className="mt-4 inline-block rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-800"
-                    >
-                      View details
-                    </Link>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <Link
+                        href={`/events/${event.id}`}
+                        className="rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-800"
+                      >
+                        View details
+                      </Link>
+
+                      <button
+                        type="button"
+                        onClick={() => toggleSavedEvent(event.id)}
+                        className="rounded-lg border border-indigo-200 px-4 py-2 text-sm font-semibold text-indigo-800 hover:bg-indigo-50"
+                      >
+                        {isSaved(event.id) ? "Remove saved" : "Save event"}
+                      </button>
+                    </div>
                   </div>
                 </article>
               ))}
