@@ -7,6 +7,12 @@ type EventDetailsPageProps = {
   params: Promise<{ id: string }>;
 };
 
+export function generateStaticParams() {
+  return events.map((event) => ({
+    id: event.id,
+  }));
+}
+
 export default async function EventDetailsPage({
   params,
 }: EventDetailsPageProps) {
