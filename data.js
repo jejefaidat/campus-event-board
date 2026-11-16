@@ -22,8 +22,8 @@ export const events = [
       "Support your department in the final match of the campus tournament.",
   },
   {
-    id: "Growth Haven",
-    title: "Qur’an Connect",
+    id: "growth-haven",
+    title: "quran-connect",
     category: "Faith",
     date: "2026-11-25",
     time: "5:30 PM",
@@ -65,8 +65,8 @@ export const events = [
       "Form a team or come cheer on students in the campus tournament.",
   },
   {
-    id: "Community-service",
-    title: "Community Care Day.",
+    id: "community-service",
+    title: "community-care-day.",
     category: "Faith",
     date: "2026-12-08",
     time: "9:00 AM",
