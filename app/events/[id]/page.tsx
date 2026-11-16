@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { events } from "../../../data";
+import Countdown from "./Countdown";
 
 type EventDetailsPageProps = {
   params: Promise<{ id: string }>;
@@ -47,6 +48,8 @@ export default async function EventDetailsPage({
               <strong>Venue:</strong> {event.venue}
             </p>
           </div>
+
+          <Countdown date={event.date} time={event.time} />
 
           <p className="mt-6 leading-7 text-slate-700">{event.description}</p>
 
