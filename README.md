@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Campus Event Board
 
-## Getting Started
+A responsive campus events app built with Next.js, React, TypeScript, and Tailwind CSS. Students can discover events, search and filter the listings, view event details, and save events for later.
 
-First, run the development server:
+## Features
+
+- Browse campus events in a responsive card layout
+- Filter events by category: Tech, Sports, Faith, and Social
+- Search events by title
+- Sort events by date
+- Open a details page for each event
+- See a countdown to each event
+- Save events and view them on the **My Events** page
+- Keep saved events after refreshing the page
+- Show a helpful message when no events match a search
+
+## Tech stack
+
+- Next.js App Router
+- React
+- TypeScript and JavaScript
+- Tailwind CSS
+- React Context for saved events
+- Browser local storage for saved event IDs
+
+## Getting started
+
+Install the project dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+On Windows PowerShell, if `npm` is blocked by the script execution policy, use `npm.cmd` instead:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+app/
+  events/
+    [id]/
+      Countdown.tsx
+      page.tsx
+  my-events/
+    page.tsx
+  SavedEventsContext.tsx
+  layout.tsx
+  page.tsx
+data.js
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Event data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The campus event list is in `data.js`. Each event includes an ID, title, category, date, time, venue, image, and description.
 
-## Deploy on Vercel
+To add or update an event, edit the list in `data.js`. Use a unique, URL-friendly ID such as `campus-tech-talk`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Saving events
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Saved event IDs are managed with React Context and stored in the browser's local storage. Saved events are available on the **My Events** page in the same browser.
