@@ -14,11 +14,24 @@ const categoryStyles: Record<string, string> = {
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortOrder, setSortOrder] = useState("soonest");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredEvents =
+  const categoryEvents =
     selectedCategory === "All"
       ? events
       : events.filter((event) => event.category === selectedCategory);
+
+  const searchResults = categoryEvents.filter((event) =>
+    event.title.toLowerCase().includes(searchTerm.trim().toLowerCase()),
+  );
+
+  const filteredEvents = [...searchResults].sort((a, b) => {
+    const dateA = new Date(`${a.date}T00:00:00`).getTime();
+    const dateB = new Date(`${b.date}T00:00:00`).getTime();
+
+    return sortOrder === "soonest" ? dateA - dateB : dateB - dateA;
+  });
 
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-10 text-slate-900 sm:px-8">
@@ -36,25 +49,46 @@ export default function Home() {
         </header>
 
         <section aria-label="Campus events">
-          <div className="mb-5">
-            <h2 className="mb-3 text-xl font-semibold">Upcoming events</h2>
+          <h2 className="mb-3 text-xl font-semibold">Upcoming events</h2>
 
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setSelectedCategory(category)}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                    selectedCategory === category
-                      ? "bg-indigo-700 text-white"
-                      : "bg-white text-slate-700 hover:bg-indigo-50"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+          <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <input
+              type="search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Search events by title..."
+              aria-label="Search events by title"
+              className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 sm:max-w-md"
+            />
+
+            <label className="flex items-center gap-2 text-sm text-slate-600">
+              Sort by date
+              <select
+                value={sortOrder}
+                onChange={(event) => setSortOrder(event.target.value)}
+                className="rounded-lg border border-slate-300 bg-white px-3 py-2"
+              >
+                <option value="soonest">Soonest first</option>
+                <option value="latest">Latest first</option>
+              </select>
+            </label>
+          </div>
+
+          <div className="mb-4 flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                  selectedCategory === category
+                    ? "bg-indigo-700 text-white"
+                    : "bg-white text-slate-700 hover:bg-indigo-50"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
           </div>
 
           <p className="mb-4 text-sm text-slate-500">
@@ -63,7 +97,7 @@ export default function Home() {
 
           {filteredEvents.length === 0 ? (
             <p className="rounded-xl bg-white p-8 text-center text-slate-600">
-              No events found in this category.
+              No events match your search. Try another title or category.
             </p>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
