@@ -1,0 +1,88 @@
+export const events = [
+  {
+    id: "tech-career-talk",
+    title: "Tech Careers: From Campus to Industry",
+    category: "Tech",
+    date: "2026-11-20",
+    time: "10:00 AM",
+    venue: "Main Auditorium",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900",
+    description:
+      "Hear graduates share how they began their careers in technology.",
+  },
+  {
+    id: "campus-football",
+    title: "Inter-Department Football Final",
+    category: "Sports",
+    date: "2026-11-22",
+    time: "3:00 PM",
+    venue: "University Sports Field",
+    image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=900",
+    description:
+      "Support your department in the final match of the campus tournament.",
+  },
+  {
+    id: "worship-evening",
+    title: "Campus Praise and Worship Evening",
+    category: "Faith",
+    date: "2026-11-25",
+    time: "5:30 PM",
+    venue: "Student Centre",
+    image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=900",
+    description: "An evening of music, reflection, and community.",
+  },
+  {
+    id: "welcome-mixer",
+    title: "New Students Welcome Mixer",
+    category: "Social",
+    date: "2026-11-28",
+    time: "4:00 PM",
+    venue: "Campus Garden",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900",
+    description:
+      "Meet other students, enjoy refreshments, and explore campus clubs.",
+  },
+  {
+    id: "web-workshop",
+    title: "Build Your First Website",
+    category: "Tech",
+    date: "2026-12-02",
+    time: "11:00 AM",
+    venue: "ICT Lab 2",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900",
+    description:
+      "A beginner-friendly hands-on workshop about building websites.",
+  },
+  {
+    id: "basketball-tournament",
+    title: "3-on-3 Basketball Tournament",
+    category: "Sports",
+    date: "2026-12-05",
+    time: "1:00 PM",
+    venue: "Indoor Sports Hall",
+    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=900",
+    description:
+      "Form a team or come cheer on students in the campus tournament.",
+  },
+  {
+    id: "community-service",
+    title: "Community Care Day",
+    category: "Faith",
+    date: "2026-12-08",
+    time: "9:00 AM",
+    venue: "Meet at the Student Centre",
+    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=900",
+    description:
+      "Join fellow students for a day of volunteering and community support.",
+  },
+  {
+    id: "end-of-semester-social",
+    title: "End-of-Semester Social",
+    category: "Social",
+    date: "2026-12-12",
+    time: "6:00 PM",
+    venue: "Campus Events Lawn",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900",
+    description: "Celebrate the semester with music, food, and games.",
+  },
+];
