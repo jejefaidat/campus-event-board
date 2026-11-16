@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { events } from "../data";
 
@@ -143,6 +144,13 @@ export default function Home() {
                     <p className="mt-3 line-clamp-2 text-sm leading-6 text-slate-600">
                       {event.description}
                     </p>
+
+                    <Link
+                      href={`/events/${event.id}`}
+                      className="mt-4 inline-block rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-800"
+                    >
+                      View details
+                    </Link>
                   </div>
                 </article>
               ))}
