@@ -22,13 +22,13 @@ export const events = [
       "Support your department in the final match of the campus tournament.",
   },
   {
-    id: "worship-evening",
-    title: "Campus Praise and Worship Evening",
+    id: "Growth Haven",
+    title: "Qur’an Connect",
     category: "Faith",
     date: "2026-11-25",
     time: "5:30 PM",
     venue: "Student Centre",
-    image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=900",
+    image: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=900",
     description: "An evening of music, reflection, and community.",
   },
   {
@@ -65,12 +65,12 @@ export const events = [
       "Form a team or come cheer on students in the campus tournament.",
   },
   {
-    id: "community-service",
-    title: "Community Care Day",
+    id: "Community-service",
+    title: "Community Care Day.",
     category: "Faith",
     date: "2026-12-08",
     time: "9:00 AM",
-    venue: "Meet at the Student Centre",
+    venue: "Meet at the Student",
     image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=900",
     description:
       "Join fellow students for a day of volunteering and community support.",
